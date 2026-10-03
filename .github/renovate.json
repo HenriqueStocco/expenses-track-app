@@ -1,0 +1,74 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "timezone": "America/Sao_Paulo",
+  "schedule": ["before 6am on monday"],
+  "enabledManagers": ["bun", "github-actions"],
+  "rangeStrategy": "pin",
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on monday"]
+  },
+  "packageRules": [
+    {
+      "description": "Trilha Expo (D2): um PR por atualização dentro do SDK, versões ditadas pelo expo install",
+      "matchPackageNames": [
+        "expo",
+        "expo-*",
+        "@expo/**",
+        "react",
+        "react-dom",
+        "react-native",
+        "react-native-*",
+        "babel-preset-expo",
+        "nativewind",
+        "@types/react"
+      ],
+      "groupName": "expo sdk"
+    },
+    {
+      "description": "Upgrade de major da trilha Expo é uma change própria (bunx expo install --fix), nunca PR automático",
+      "matchPackageNames": [
+        "expo",
+        "expo-*",
+        "@expo/**",
+        "react",
+        "react-dom",
+        "react-native",
+        "react-native-*",
+        "babel-preset-expo",
+        "nativewind",
+        "@types/react"
+      ],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "Drizzle",
+      "matchPackageNames": ["drizzle-orm", "drizzle-kit"],
+      "groupName": "drizzle"
+    },
+    {
+      "description": "Ferramentas de desenvolvimento",
+      "matchPackageNames": [
+        "@biomejs/biome",
+        "knip",
+        "syncpack",
+        "@types/bun",
+        "typescript"
+      ],
+      "groupName": "dev tools"
+    },
+    {
+      "description": "GitHub Actions fixadas por digest, commit no escopo ci",
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions",
+      "pinDigests": true,
+      "semanticCommitType": "ci",
+      "semanticCommitScope": "ci"
+    }
+  ]
+}
