@@ -1,0 +1,17 @@
+docs
+.drizzle
+knip.json
+README.md
+biome.json
+node_modules
+
+# testes e E2E — fora do contexto de build/prebuild
+**/__tests__
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+.maestro
+.git
+.githooks
+.github
