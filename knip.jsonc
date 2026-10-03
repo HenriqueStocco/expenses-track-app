@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
+  "workspaces": {
+    ".": {
+      "project": ["scripts/**/*.ts"],
+      "metro": false,
+      "entry": ["metro.config.js"],
+      "drizzle": { "config": ["src/db/drizzle.config.ts"] }
+    }
+  }
+}

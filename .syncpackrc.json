@@ -1,0 +1,45 @@
+{
+  "$schema": "./node_modules/syncpack/schema.json",
+  "versionGroups": [
+    {
+      "label": "TypeScript em todo o monorepo segue a versão escolhida pelo expo install no app",
+      "dependencies": ["typescript"]
+    },
+    {
+      "label": "Família Expo: versão ditada por `bunx expo install`, não pelo syncpack",
+      "dependencies": [
+        "expo",
+        "expo-*",
+        "@expo/**",
+        "react",
+        "react-dom",
+        "react-native",
+        "react-native-*",
+        "@react-native/**",
+        "@types/react"
+      ],
+      "isIgnored": true
+    }
+  ],
+  "semverGroups": [
+    {
+      "label": "Família Expo pode usar ~ (versões ditadas pelo expo install)",
+      "dependencies": [
+        "expo",
+        "expo-*",
+        "@expo/**",
+        "react",
+        "react-dom",
+        "react-native",
+        "react-native-*",
+        "@react-native/**",
+        "@types/react"
+      ],
+      "isIgnored": true
+    },
+    {
+      "label": "Todo o resto com versão exata (sem ^ ou ~)",
+      "range": ""
+    }
+  ]
+}
