@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Conventional Commits check for the commit message.
+exec bun scripts/check-commit-msg.ts "$1"

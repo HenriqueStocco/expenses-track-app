@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Fast checks on what is being committed: lint, format and import order of the
+# staged files (fix with `bun run fix`), then the typecheck.
+set -e
+bunx biome check --staged --no-errors-on-unmatched
+bun run --silent typecheck

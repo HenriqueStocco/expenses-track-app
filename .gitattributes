@@ -1,0 +1,16 @@
+# Normaliza finais de linha para LF em qualquer sistema operacional
+* text=auto eol=lf
+
+# Binários
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+
+# Arquivos gerados (colapsados nos diffs do GitHub)
+bun.lock linguist-generated=true

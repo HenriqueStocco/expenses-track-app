@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Full quality gate before anything leaves the machine (same as CI).
+exec bun run check
