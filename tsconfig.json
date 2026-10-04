@@ -25,14 +25,16 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "jsx": "react-jsx",
-        "allowJs": true,
+    "allowJs": true,
     "strict": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "allowImportingTsExtensions": true
   },
-    "include": [
+  "include": [
     "**/*.ts",
     "**/*.js",
     "**/*.tsx",

@@ -20,7 +20,8 @@
     "includes": [
       "./**/*.{ts,js}",
       "!**/node_modules/**",
-      "./src/**/*.{ts,tsx,js,jsx}"
+      "./src/**/*.{ts,tsx,js,jsx}",
+      "!**/*.css"
     ]
   },
   "linter": {
@@ -104,7 +105,7 @@
         "useNamespaceKeyword": "error"
       }
     },
-    "includes": ["**", "!dist/**"]
+    "includes": ["**", "!dist/**", "!**/*.css"]
   },
   "javascript": {
     "formatter": {

@@ -1,0 +1,33 @@
+name: Check code
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main, feature/*, release/*, fix/*]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Dependencies (syncpack, knip, tsc, Biome)
+        run: bun run check

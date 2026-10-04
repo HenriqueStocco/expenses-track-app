@@ -1,0 +1,4 @@
+# Custom labels of the self-hosted runner used by deploy.yaml
+self-hosted-runner:
+  labels:
+    - finances-app
