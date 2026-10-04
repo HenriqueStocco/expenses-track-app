@@ -43,9 +43,12 @@
     "src/**/*.js",
     "src/**/*.tsx",
     "src/**/*.jsx",
-    "nativewind-env.d.ts",
     "expo-env.d.ts",
     "assets.d.ts",
     ".expo/types/**/*.ts"
+  ],
+  "exclude": [
+    "scripts/**/*.ts",
+    "node_modules"
   ]
 }

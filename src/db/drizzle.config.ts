@@ -5,7 +5,7 @@ export default defineConfig({
   driver: 'expo',
   schema: 'src/db/schemas',
   out: 'src/db/migrations',
-  strict: true,
   verbose: true,
-  introspect: { casing: 'preserve' },
+  breakpoints: true,
+  introspect: { casing: 'camel' },
 })

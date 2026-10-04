@@ -1,5 +1,3 @@
-import '../../global.css'
-
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { SQLiteProvider } from 'expo-sqlite'
@@ -8,27 +6,37 @@ import {
   initialWindowMetrics,
 } from 'react-native-safe-area-context'
 
-import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
+import { useAuthContext } from '@/hooks/useAuthContext'
+import { AuthContextProvider } from '@/contexts/auth/provider'
 
-const RootNavigation = () => (
-  <Stack
-    screenOptions={{
-      headerShown: false,
-    }}
-  >
-    <Stack.Screen name='login' />
-  </Stack>
-)
+const RootNavigation = () => {
+  const { authState } = useAuthContext()
+
+  if (authState === 'loading') return null
+
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Protected guard={authState === 'unauthenticated'}>
+        <Stack.Screen name='auth' />
+      </Stack.Protected>
+    </Stack>
+  )
+}
 
 export default function RootLayout() {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <GluestackUIProvider mode='light'>
-        <SQLiteProvider databaseName='payvo.db'>
-          <StatusBar style='dark' />
+      <SQLiteProvider databaseName='payvo.db'>
+        <StatusBar style='dark' />
+
+        <AuthContextProvider>
           <RootNavigation />
-        </SQLiteProvider>
-      </GluestackUIProvider>
+        </AuthContextProvider>
+      </SQLiteProvider>
     </SafeAreaProvider>
   )
 }

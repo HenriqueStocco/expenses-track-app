@@ -7,7 +7,13 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!src/db/migrations/migrations.js"]
+    "includes": [
+      "**",
+      "!src/db/migrations/migrations.js",
+      "!babel.config.js",
+      "!metro.config.js",
+      "!scripts/**/*.{ts,js}"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -21,7 +27,10 @@
       "./**/*.{ts,js}",
       "!**/node_modules/**",
       "./src/**/*.{ts,tsx,js,jsx}",
-      "!**/*.css"
+      "!**/*.css",
+      "!babel.config.js",
+      "!metro.config.js",
+      "!scripts/**"
     ]
   },
   "linter": {
@@ -105,7 +114,14 @@
         "useNamespaceKeyword": "error"
       }
     },
-    "includes": ["**", "!dist/**", "!**/*.css"]
+    "includes": [
+      "**",
+      "!dist/**",
+      "!**/*.css",
+      "!babel.config.js",
+      "!metro.config.js",
+      "!scripts/**"
+    ]
   },
   "javascript": {
     "formatter": {

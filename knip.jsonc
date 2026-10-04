@@ -2,10 +2,11 @@
   "$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
   "workspaces": {
     ".": {
-      "project": ["scripts/**/*.ts"],
+      "project": ["src/**/*.{ts,tsx,js,jsx}"],
       "metro": false,
       "entry": ["metro.config.js"],
-      "drizzle": { "config": ["src/db/drizzle.config.ts"] }
+      "drizzle": { "config": ["src/db/drizzle.config.ts"] },
+      "ignoreDependencies": ["drizzle-orm"]
     }
   }
 }

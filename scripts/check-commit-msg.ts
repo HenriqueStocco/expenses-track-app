@@ -1,6 +1,5 @@
 // Validates a commit message against Conventional Commits.
 // Used by .githooks/commit-msg: `bun scripts/check-commit-msg.ts <message-file>`.
-
 const types = [
   'feat',
   'fix',
@@ -28,13 +27,16 @@ export function validateCommitMessage(raw: string): string[] {
   const lines = (scissors === -1 ? raw : raw.slice(0, scissors))
     .split('\n')
     .filter(line => !line.startsWith('#'))
+
   while (lines.length > 0 && lines[0]?.trim() === '') lines.shift()
 
   const first = lines[0]?.trimEnd() ?? ''
+
   if (first === '') return ['The commit message is empty.']
   if (generated.test(first)) return []
 
   const problems: string[] = []
+
   if (!header.test(first)) {
     problems.push(
       'The header must be `<type>(<optional scope>)!: <description>`, ' +
@@ -57,15 +59,20 @@ export function validateCommitMessage(raw: string): string[] {
 
 if (import.meta.main) {
   const file = Bun.argv[2]
+
   if (!file) {
     console.error('Usage: bun scripts/check-commit-msg.ts <message-file>')
     process.exit(2)
   }
+
   const message = await Bun.file(file).text()
   const problems = validateCommitMessage(message)
+
   if (problems.length > 0) {
     console.error('✖ Invalid commit message (Conventional Commits):\n')
+
     for (const problem of problems) console.error(`  - ${problem}`)
+
     console.error(
       [
         '',
